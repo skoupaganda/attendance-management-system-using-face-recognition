@@ -1,6 +1,6 @@
 Facial Recognition Attendance System
 
-Description
+Description: 
 This project is an attendance management system that utilizes facial recognition for employee verification and attendance marking. The system is built using Django for the backend and OpenCV for facial recognition.
 
 Features
