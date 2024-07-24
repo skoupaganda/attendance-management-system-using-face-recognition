@@ -30,9 +30,14 @@ Allow access to the webcam.
 The system will scan faces in real-time and mark attendance for recognized users.
 
 1_ Create and activate a virtual environment
+
 2_ Install the dependencies : pip install -r requirements.txt
+
 3_ Apply the migrations: python manage.py migrate
+
 4_ Create a superuser (to access the admin interface): python manage.py createsuperuser
+
 5_ Run the development server: python manage.py runserver
+
 6_ Access the application: Open a web browser and go to http://127.0.0.1:8000/
 
