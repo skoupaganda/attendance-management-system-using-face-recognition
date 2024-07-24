@@ -1,0 +1,55 @@
+body {
+    background: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #007bff;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.nav-link:hover {
+    color: #0056b3;
+}
+
+.container {
+    background: #ffffff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.table tbody td {
+    color: #6c757d;
+}
+
+.table tbody td:first-child, 
+.table tbody td:last-child {
+    font-weight: bold;
+    color: #343a40;
+}

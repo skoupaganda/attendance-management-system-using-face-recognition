@@ -1,0 +1,27 @@
+{% extends 'attendance/base_home.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Attendance Dashboard</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendance_data %}
+                <tr>
+                    <td>{{ attendance.user.first_name }}</td>
+                    <td>{{ attendance.user.last_name }}</td>
+                    <td>{{ attendance.timestamp|date:"Y-m-d" }}</td>
+                    <td>{{ attendance.timestamp|time:"H:i:s" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

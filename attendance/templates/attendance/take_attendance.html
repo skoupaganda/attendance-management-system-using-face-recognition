@@ -1,0 +1,108 @@
+{% extends 'attendance/base_home.html' %}
+
+{% block title %}Take Attendance{% endblock %}
+
+{% block extra_css %}
+    <style>
+        /* Inline styles for Take Attendance page */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust to desired height */
+            margin-top: 50px; /* Example margin */
+            padding: 20px; /* Example padding */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Example margin */
+            color: #333;
+        }
+
+        #video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #video {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px; /* Example padding */
+        }
+
+        #capture-container {
+            text-align: center;
+        }
+
+        #capture {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #video {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Mark Your Attendance</h1>
+        <div id="video-container">
+            <video id="video" autoplay></video>
+        </div>
+        <canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
+        
+        <div id="capture-container">
+            <button id="capture" class="btn btn-primary mt-3">Capture and Submit</button>
+        </div>
+
+        <form method="post" id="attendanceForm" style="margin-top: 20px; display:none;">
+            {% csrf_token %}
+            <input type="hidden" name="image" id="imageInput">
+        </form>
+    </div>
+<br/><br/><br/><br/><br/>
+
+
+
+
+    <script>
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var captureButton = document.getElementById('capture');
+        var imageInput = document.getElementById('imageInput');
+        var attendanceForm = document.getElementById('attendanceForm');
+
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+
+        captureButton.addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 400, 300);
+            var dataUrl = canvas.toDataURL('image/png');
+            imageInput.value = dataUrl;
+            attendanceForm.submit();
+        });
+    </script>
+{% endblock %}

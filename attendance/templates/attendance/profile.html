@@ -1,0 +1,112 @@
+{% extends 'attendance/base_home.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Update Profile</h2>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="mb-3">
+                            {{ form.username }}
+                            <div class="invalid-feedback">{{ form.username.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form.first_name }}
+                            <div class="invalid-feedback">{{ form.first_name.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form.last_name }}
+                            <div class="invalid-feedback">{{ form.last_name.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form.email }}
+                            <div class="invalid-feedback">{{ form.email.errors }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="profile_picture">Profile Picture:</label>
+                            <video id="video" width="400" height="300" autoplay></video>
+                            <button type="button" class="btn btn-secondary mt-2" id="snap">Capture Profile Picture</button>
+                            <canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
+                            <img id="captured-image" src="" alt="Captured Image" style="display:none;" class="mt-3">
+                            {{ form.profile_picture }}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+                    </form>
+                    <br/>
+                    <div class="d-grid gap-2 mt-3">
+                        <a href="{% url 'update_password' %}" class="btn btn-secondary">Change Password</a>
+                    </div>
+                    <br/>
+                    <!-- Button to trigger the Delete Profile Modal -->
+                    <button type="button" class="btn btn-danger w-100 mt-2" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">
+                        Delete Profile
+                    </button>
+
+                    <!-- Delete Profile Confirmation Modal -->
+                    <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteProfileModalLabel">Confirm Delete Profile</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete your profile? This action cannot be undone.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <form method="post" action="{% url 'delete_profile' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/><br/><br/><br/>
+
+<script>
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var snap = document.getElementById('snap');
+    var profilePictureInput = document.getElementById('id_profile_picture');
+    var capturedImage = document.getElementById('captured-image');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+        });
+    }
+
+    snap.addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 400, 300);
+        var dataUrl = canvas.toDataURL('image/png');
+        profilePictureInput.value = dataUrl;
+        capturedImage.src = dataUrl;
+        capturedImage.style.display = 'block';
+    });
+</script>
+{% endblock %}

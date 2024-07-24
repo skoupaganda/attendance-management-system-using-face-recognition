@@ -1,0 +1,62 @@
+{% extends 'attendance/base_index.html' %}
+
+{% block title %}Services{% endblock %}
+{% load static %}
+
+{% block content %}
+<style>
+    .custom-container {
+        margin-top: 50px;
+    }
+    .service-card {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .service-card i {
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+    .service-card h5 {
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+</style>
+<div class="container custom-container">
+    <h2 class="text-center mb-5">Services</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="fas fa-key fa-2x mb-3"></i>
+                <h5>Authentication</h5>
+                <p>Our system ensures that only authorized employees can mark their attendance, preventing any unauthorized access or fraudulent activities</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="fas fa-file-alt fa-2x mb-3"></i>
+                <h5>Generating Attendance Sheet</h5>
+                <p>As soon as the face will be scanned, the attendance of the student will be marked in the attendance sheet.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="fas fa-clock fa-2x mb-3"></i>
+                <h5>Time Saving</h5>
+                <p>The image is scanned in just a few seconds, resulting in saving time as compared to the offline attendance system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

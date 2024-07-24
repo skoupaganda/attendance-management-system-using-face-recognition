@@ -1,0 +1,100 @@
+{% extends 'attendance/base_index.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="hero">
+      <h1>Welcome to Online Attendance System</h1>
+      <p>Track your attendance and stay organized!</p>
+      <style>
+        .hero {
+          background-image: linear-gradient(to bottom, #f9f9f9, #fff);
+          padding: 20px 10px;
+          text-align: center;
+        }
+        .hero h1 {
+          font-size: 36px;
+          font-weight: bold;
+          color: #337ab7;
+        }
+        .hero p {
+          font-size: 18px;
+          color: #666;
+        }
+      </style>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <ul style="text-align: center;">
+        <li style="display: inline-block; margin: 0 20px;"><i class="fas fa-user"></i> Easy Profile Management</li>
+        <li style="display: inline-block; margin: 0 20px;"><i class="fas fa-clock"></i> Simple Attendance Tracking</li>
+        <li style="display: inline-block; margin: 0 20px;"><i class="fas fa-chart-bar"></i> Detailed Attendance Reports</li>
+      </ul>
+      <style>
+        .features {
+          padding: 20px 20px;
+          text-align: center;
+        }
+        .features h2 {
+          font-size: 24px;
+          font-weight: bold;
+          color: #337ab7;
+        }
+        .features ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .features li {
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+        .features li i {
+          margin-right: 10px;
+          color: #337ab7;
+        }
+      </style>
+    </section>
+
+    <section class="call-to-action">
+      <h2>Get Started</h2>
+      <p>Log in or sign up to start tracking your attendance today!</p>
+      <a href="{% url 'login' %}" class="btn">Log In</a>
+      <a href="{% url 'register_user' %}" class="btn">Sign Up</a>
+      <style>
+        .call-to-action {
+          background-image: linear-gradient(to bottom, #337ab7, #2e6da4);
+          padding: 40px 20px;
+          text-align: center;
+          color: #fff;
+        }
+        .call-to-action h2 {
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .call-to-action p {
+          font-size: 18px;
+        }
+        .call-to-action .btn {
+          background-color: #fff;
+          color: #337ab7;
+          border: none;
+          padding: 10px 20px;
+          font-size: 20px;
+          cursor: pointer;
+
+        }
+        .call-to-action.btn:hover {
+          background-color: #f9f9f9;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          transition: 0.3s;
+          transform: translateY(-2px);
+          color: #23527c;
+          border: 1px solid #23527c;
+        }
+      </style>
+    </section>
+  </main>
+{% endblock %}

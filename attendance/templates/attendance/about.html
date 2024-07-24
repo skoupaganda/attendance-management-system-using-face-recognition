@@ -1,0 +1,62 @@
+{% extends 'attendance/base_index.html' %}
+
+{% block title %}About{% endblock %}
+{% load static %}
+
+{% block content %}
+<style>
+    .custom-container {
+        margin-top: 50px;
+    }
+    .custom-section {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .custom-image {
+        flex: 1;
+        padding: 20px;
+    }
+    .custom-text {
+        flex: 1;
+        padding: 20px;
+    }
+    .custom-text h2 {
+        margin-bottom: 20px;
+    }
+    .custom-text ul {
+        padding-left: 0;
+        list-style: none;
+    }
+    .custom-text ul li {
+        margin-bottom: 10px;
+    }
+    .custom-text ul li i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+</style>
+<div class="container custom-container">
+    <div class="row custom-section">
+        <div class="col-md-6 custom-image">
+            <img src="{% static 'images/about_us.png' %}" class="img-fluid" alt="Face Recognition">
+        </div>
+        <div class="col-md-6 custom-text">
+            <h2>Face Recognition Based Attendance</h2>
+            <p>A system for folding and recognizing human faces fast and precisely for attendance</p>
+            <ul class="list-unstyled">
+                <li><i class="fas fa-camera"></i> Face Scanning - scan the faces of employees in a few seconds and attendance will be marked</li>
+                <li><i class="fas fa-user-check"></i> User Friendly - Easily accessible and understandable to the users of our system</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

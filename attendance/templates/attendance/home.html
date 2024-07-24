@@ -1,0 +1,32 @@
+{% extends 'attendance/base_home.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="alert alert-info">
+            <h4 class="alert-heading">Welcome, {{ user.first_name }} {{ user.last_name }}!</h4>
+            <p class="mb-0">You are logged in to the Attendance System.</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mark Attendance</h5>
+                <p class="card-text">Click below to mark your attendance:</p>
+                <a href="{% url 'take_attendance' %}" class="btn btn-primary">Take Attendance</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Attendance Report</h5>
+                <p class="card-text">View your attendance report:</p>
+                <a href="{% url 'dashboard' %}" class="btn btn-success">View Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
